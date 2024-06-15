@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dakughp4wnfqp"]
+
+[ext_resource type="Texture2D" uid="uid://5yc1pucje53p" path="res://assets/backgrounds/RingOneBoard.png" id="1_lplvv"]
+[ext_resource type="PackedScene" uid="uid://ban8eyinllj6l" path="res://player/fight_player.tscn" id="2_q6743"]
+
+[node name="RingOneBoard" type="Node2D"]
+
+[node name="BoardSprite" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_lplvv")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="FightPlayer" parent="Player" instance=ExtResource("2_q6743")]
