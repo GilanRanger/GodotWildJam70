@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ban8eyinllj6l"]
+[gd_scene load_steps=3 format=3 uid="uid://ban8eyinllj6l"]
 
 [ext_resource type="Texture2D" uid="uid://yx81678a1ojr" path="res://assets/sprites/Pryderi.png" id="1_86sre"]
+[ext_resource type="Script" path="res://player/fight_player.gd" id="1_ecrad"]
 
 [node name="FightPlayer" type="Node2D"]
+script = ExtResource("1_ecrad")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2r8j8rn8g6g5"]
+
+[ext_resource type="Script" path="res://enemy/world_enemy.gd" id="1_pv3tx"]
+[ext_resource type="Texture2D" uid="uid://c4x7klbtcynpi" path="res://assets/sprites/Gwiber.png" id="2_tppkv"]
+
+[node name="Gwiber" type="Node2D"]
+script = ExtResource("1_pv3tx")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_tppkv")

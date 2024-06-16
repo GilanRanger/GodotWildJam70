@@ -2,13 +2,18 @@ extends Node2D
 class_name WorldBoard
 
 var node_relations = {}
-
-# -- Data --
-# Node Relations
-# Enemies
+var enemies = []
 
 func _ready():
 	create_node_relations()
+	enemies = get_node("WorldEnemies").get_children()
+
+func get_enemy_at(x: int, y: int) -> WorldEnemy:
+	for enemy in enemies:
+		if (enemy as WorldEnemy).homeNode == [x, y]:
+			return (enemy as WorldEnemy)
+			
+	return null
 
 func get_node_position(x: int, y: int) -> Vector2:
 	var node_name = str(x) + "," + str(y)
@@ -79,5 +84,5 @@ func create_node_relations():
 	node_relations[[1,-3]] = [[0,-3],[3,-3]]
 	node_relations[[0,-3]] = [[0,-2],[-1,-3],[1,-3]]
 	node_relations[[-1,-3]] = [[0,-3],[-3,-3]]
-	node_relations[[-3,-3]] = [[-2,-2],[-3,1],[-1,-3]]
+	node_relations[[-3,-3]] = [[-2,-2],[-3,1],[-3,-1]]
 	node_relations[[-3,-1]] = [[-3,0],[-3,-3]]

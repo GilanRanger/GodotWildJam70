@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbxdojvqt5wqk"]
 
 [ext_resource type="Texture2D" uid="uid://yx81678a1ojr" path="res://assets/sprites/Pryderi.png" id="1_l7qm0"]
-[ext_resource type="Script" path="res://scripts/world_player.gd" id="1_n76jg"]
+[ext_resource type="Script" path="res://player/world_player.gd" id="1_n76jg"]
 
 [node name="WorldPlayer" type="Node2D"]
 script = ExtResource("1_n76jg")
