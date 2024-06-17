@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7atjm54htmt8"]
+[gd_scene load_steps=19 format=3 uid="uid://b7atjm54htmt8"]
 
 [ext_resource type="Script" path="res://scenes/fight_interface.gd" id="1_xnesr"]
 [ext_resource type="Texture2D" uid="uid://djihavvqluisi" path="res://assets/ui/assets/HealthBarBackground.png" id="2_0u6qh"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://scenes/roll_button.gd" id="7_hol6y"]
 [ext_resource type="Script" path="res://assets/ui/scripts/dice.gd" id="7_t2vwx"]
 [ext_resource type="Script" path="res://scenes/message_display.gd" id="16_52wp5"]
+[ext_resource type="Texture2D" uid="uid://dm1m2gw2pdy1g" path="res://assets/ui/assets/Selector.png" id="16_i6rxl"]
+[ext_resource type="Script" path="res://scenes/selector.gd" id="16_spbrb"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_xnesr")
@@ -114,6 +116,30 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_n4a87")
 vframes = 2
 
+[node name="DieAreaMove" type="Node2D" parent="DiceDisplay"]
+position = Vector2(450, 275)
+
+[node name="Sprite" type="Sprite2D" parent="DiceDisplay/DieAreaMove"]
+scale = Vector2(3, 3)
+texture = ExtResource("5_t1wdr")
+offset = Vector2(0, -4.5)
+
+[node name="DieAreaAttack" type="Node2D" parent="DiceDisplay"]
+position = Vector2(600, 275)
+
+[node name="Sprite" type="Sprite2D" parent="DiceDisplay/DieAreaAttack"]
+scale = Vector2(3, 3)
+texture = ExtResource("6_mguom")
+offset = Vector2(0, -4.5)
+
+[node name="DieAreaBlock" type="Node2D" parent="DiceDisplay"]
+position = Vector2(750, 275)
+
+[node name="Sprite" type="Sprite2D" parent="DiceDisplay/DieAreaBlock"]
+scale = Vector2(3, 3)
+texture = ExtResource("7_4a8nq")
+offset = Vector2(0, -4.5)
+
 [node name="Die1" type="Node2D" parent="DiceDisplay"]
 position = Vector2(450, 375)
 script = ExtResource("7_t2vwx")
@@ -147,31 +173,12 @@ vframes = 8
 
 [node name="Timer" type="Timer" parent="DiceDisplay/Die3"]
 
-[node name="DieAreaMove" type="Node2D" parent="DiceDisplay"]
-position = Vector2(450, 275)
-
-[node name="Sprite" type="Sprite2D" parent="DiceDisplay/DieAreaMove"]
-scale = Vector2(3, 3)
-texture = ExtResource("5_t1wdr")
-offset = Vector2(0, -4.5)
-
-[node name="DieAreaAttack" type="Node2D" parent="DiceDisplay"]
-position = Vector2(600, 275)
-
-[node name="Sprite" type="Sprite2D" parent="DiceDisplay/DieAreaAttack"]
-scale = Vector2(3, 3)
-texture = ExtResource("6_mguom")
-offset = Vector2(0, -4.5)
-
-[node name="DieAreaBlock" type="Node2D" parent="DiceDisplay"]
-position = Vector2(750, 275)
-
-[node name="Sprite" type="Sprite2D" parent="DiceDisplay/DieAreaBlock"]
-scale = Vector2(3, 3)
-texture = ExtResource("7_4a8nq")
-offset = Vector2(0, -4.5)
-
 [node name="Selector" type="Node2D" parent="DiceDisplay"]
+script = ExtResource("16_spbrb")
+
+[node name="Sprite" type="Sprite2D" parent="DiceDisplay/Selector"]
+scale = Vector2(3, 3)
+texture = ExtResource("16_i6rxl")
 
 [node name="MessageDisplay" type="Node2D" parent="."]
 script = ExtResource("16_52wp5")

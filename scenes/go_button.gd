@@ -39,6 +39,8 @@ func _input(event):
 func click_event():
 	go_clicked.emit()
 	
+	# Leave Dice menu
+	get_parent().visible = false
 
 func set_hover_texture():
 	sprite.frame = 1

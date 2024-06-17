@@ -38,6 +38,7 @@ func _input(event):
 
 func click_event():
 	roll_clicked.emit()
+	visible = false
 
 func set_hover_texture():
 	sprite.frame = 1
