@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brt78a00xd2o3"
-path="res://.godot/imported/DiceSpriteSheet.png-39a9d97125e356fd82eb096bde3d7bc0.ctex"
+uid="uid://bu6pbxgmvy4ct"
+path="res://.godot/imported/MoveSelect.png-d180e2bc367f9bd6aae47e2213722a85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/DiceSpriteSheet.png"
-dest_files=["res://.godot/imported/DiceSpriteSheet.png-39a9d97125e356fd82eb096bde3d7bc0.ctex"]
+source_file="res://assets/ui/assets/MoveSelect.png"
+dest_files=["res://.godot/imported/MoveSelect.png-d180e2bc367f9bd6aae47e2213722a85.ctex"]
 
 [params]
 

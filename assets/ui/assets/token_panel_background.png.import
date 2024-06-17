@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8i4krflh3tlh"
-path="res://.godot/imported/GoButtonSheet.png-b1881c319e69cd13a894625101e5a350.ctex"
+uid="uid://c4mv0ibsee7vj"
+path="res://.godot/imported/token_panel_background.png-71eebe137a09f211a9937672057257c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/GoButtonSheet.png"
-dest_files=["res://.godot/imported/GoButtonSheet.png-b1881c319e69cd13a894625101e5a350.ctex"]
+source_file="res://assets/ui/assets/token_panel_background.png"
+dest_files=["res://.godot/imported/token_panel_background.png-71eebe137a09f211a9937672057257c1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk3ti6l4y2fbq"
-path="res://.godot/imported/AttackSelect.png-1b6b841e6a4bfa80b97f589a9d62cdfb.ctex"
+uid="uid://djihavvqluisi"
+path="res://.godot/imported/HealthBarBackground.png-975e8a8bc81c729240bb872b9e400fc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/AttackSelect.png"
-dest_files=["res://.godot/imported/AttackSelect.png-1b6b841e6a4bfa80b97f589a9d62cdfb.ctex"]
+source_file="res://assets/ui/assets/HealthBarBackground.png"
+dest_files=["res://.godot/imported/HealthBarBackground.png-975e8a8bc81c729240bb872b9e400fc8.ctex"]
 
 [params]
 

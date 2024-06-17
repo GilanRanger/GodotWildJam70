@@ -1,21 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7atjm54htmt8"]
+[gd_scene load_steps=17 format=3 uid="uid://b7atjm54htmt8"]
 
 [ext_resource type="Script" path="res://scenes/fight_interface.gd" id="1_xnesr"]
-[ext_resource type="Texture2D" uid="uid://djihavvqluisi" path="res://assets/ui/HealthBarBackground.png" id="2_0u6qh"]
-[ext_resource type="Texture2D" uid="uid://8i4krflh3tlh" path="res://assets/ui/GoButtonSheet.png" id="2_2bjbm"]
-[ext_resource type="Texture2D" uid="uid://c4mv0ibsee7vj" path="res://assets/ui/token_panel_background.png" id="2_grybf"]
-[ext_resource type="Texture2D" uid="uid://0dak0k3s5m2d" path="res://assets/ui/RollButtonSheet.png" id="2_n4a87"]
-[ext_resource type="Texture2D" uid="uid://b4l1pjdb4cym8" path="res://assets/ui/HealthBarOverlay.png" id="3_847ou"]
-[ext_resource type="Texture2D" uid="uid://brt78a00xd2o3" path="res://assets/ui/DiceSpriteSheet.png" id="4_0kqbx"]
-[ext_resource type="Texture2D" uid="uid://bu6pbxgmvy4ct" path="res://assets/ui/MoveSelect.png" id="5_t1wdr"]
-[ext_resource type="Texture2D" uid="uid://dk3ti6l4y2fbq" path="res://assets/ui/AttackSelect.png" id="6_mguom"]
-[ext_resource type="Texture2D" uid="uid://csxihfj26eau4" path="res://assets/ui/BlockSelect.png" id="7_4a8nq"]
+[ext_resource type="Texture2D" uid="uid://djihavvqluisi" path="res://assets/ui/assets/HealthBarBackground.png" id="2_0u6qh"]
+[ext_resource type="Texture2D" uid="uid://8i4krflh3tlh" path="res://assets/ui/assets/GoButtonSheet.png" id="2_2bjbm"]
+[ext_resource type="Texture2D" uid="uid://c4mv0ibsee7vj" path="res://assets/ui/assets/token_panel_background.png" id="2_grybf"]
+[ext_resource type="Script" path="res://scenes/health_display.gd" id="2_mua64"]
+[ext_resource type="Texture2D" uid="uid://0dak0k3s5m2d" path="res://assets/ui/assets/RollButtonSheet.png" id="2_n4a87"]
+[ext_resource type="Texture2D" uid="uid://b4l1pjdb4cym8" path="res://assets/ui/assets/HealthBarOverlay.png" id="3_847ou"]
+[ext_resource type="Texture2D" uid="uid://brt78a00xd2o3" path="res://assets/ui/assets/DiceSpriteSheet.png" id="4_0kqbx"]
+[ext_resource type="Script" path="res://scenes/go_button.gd" id="5_ig653"]
+[ext_resource type="Script" path="res://scenes/token_display.gd" id="5_mvpeq"]
+[ext_resource type="Texture2D" uid="uid://bu6pbxgmvy4ct" path="res://assets/ui/assets/MoveSelect.png" id="5_t1wdr"]
+[ext_resource type="Texture2D" uid="uid://dk3ti6l4y2fbq" path="res://assets/ui/assets/AttackSelect.png" id="6_mguom"]
+[ext_resource type="Texture2D" uid="uid://csxihfj26eau4" path="res://assets/ui/assets/BlockSelect.png" id="7_4a8nq"]
+[ext_resource type="Script" path="res://scenes/roll_button.gd" id="7_hol6y"]
+[ext_resource type="Script" path="res://assets/ui/scripts/dice.gd" id="7_t2vwx"]
+[ext_resource type="Script" path="res://scenes/message_display.gd" id="16_52wp5"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_xnesr")
 
 [node name="PlayerHealthDisplay" type="Node2D" parent="."]
 position = Vector2(125, 75)
+script = ExtResource("2_mua64")
 
 [node name="Background" type="Sprite2D" parent="PlayerHealthDisplay"]
 scale = Vector2(3, 3)
@@ -24,9 +31,27 @@ texture = ExtResource("2_0u6qh")
 [node name="Overlay" type="Sprite2D" parent="PlayerHealthDisplay"]
 scale = Vector2(3, 3)
 texture = ExtResource("3_847ou")
+vframes = 8
+region_filter_clip_enabled = true
+
+[node name="Label" type="RichTextLabel" parent="PlayerHealthDisplay"]
+offset_left = -61.0
+offset_top = -47.0
+offset_right = 75.64
+offset_bottom = -19.0
+scale = Vector2(1.25, 1.25)
+text = "Player Name"
+
+[node name="HealthLabel" type="RichTextLabel" parent="PlayerHealthDisplay"]
+offset_left = 75.0
+offset_top = -10.0
+offset_right = 131.0
+offset_bottom = 30.0
+text = "20/20"
 
 [node name="EnemyHealthDisplay" type="Node2D" parent="."]
 position = Vector2(1024, 75)
+script = ExtResource("2_mua64")
 
 [node name="Background" type="Sprite2D" parent="EnemyHealthDisplay"]
 scale = Vector2(3, 3)
@@ -35,8 +60,25 @@ texture = ExtResource("2_0u6qh")
 [node name="Overlay" type="Sprite2D" parent="EnemyHealthDisplay"]
 scale = Vector2(3, 3)
 texture = ExtResource("3_847ou")
+vframes = 8
+
+[node name="Label" type="RichTextLabel" parent="EnemyHealthDisplay"]
+offset_left = -61.0
+offset_top = -47.0
+offset_right = 75.64
+offset_bottom = -19.0
+scale = Vector2(1.25, 1.25)
+text = "Enemy Name"
+
+[node name="HealthLabel" type="RichTextLabel" parent="EnemyHealthDisplay"]
+offset_left = 75.0
+offset_top = -10.0
+offset_right = 131.0
+offset_bottom = 30.0
+text = "20/20"
 
 [node name="TokensDisplay" type="Node2D" parent="."]
+script = ExtResource("5_mvpeq")
 
 [node name="Background" type="Sprite2D" parent="TokensDisplay"]
 position = Vector2(129, 359)
@@ -56,6 +98,7 @@ color = Color(0.219608, 0.27451, 0.27451, 0.780392)
 
 [node name="GoButton" type="Node2D" parent="DiceDisplay"]
 position = Vector2(600, 450)
+script = ExtResource("5_ig653")
 
 [node name="Sprite" type="Sprite2D" parent="DiceDisplay/GoButton"]
 scale = Vector2(3, 3)
@@ -64,6 +107,7 @@ vframes = 2
 
 [node name="RollButton" type="Node2D" parent="DiceDisplay"]
 position = Vector2(600, 450)
+script = ExtResource("7_hol6y")
 
 [node name="Sprite" type="Sprite2D" parent="DiceDisplay/RollButton"]
 scale = Vector2(3, 3)
@@ -72,27 +116,36 @@ vframes = 2
 
 [node name="Die1" type="Node2D" parent="DiceDisplay"]
 position = Vector2(450, 375)
+script = ExtResource("7_t2vwx")
 
 [node name="Sprite" type="Sprite2D" parent="DiceDisplay/Die1"]
 scale = Vector2(3, 3)
 texture = ExtResource("4_0kqbx")
 vframes = 8
 
+[node name="Timer" type="Timer" parent="DiceDisplay/Die1"]
+
 [node name="Die2" type="Node2D" parent="DiceDisplay"]
 position = Vector2(600, 375)
+script = ExtResource("7_t2vwx")
 
 [node name="Sprite" type="Sprite2D" parent="DiceDisplay/Die2"]
 scale = Vector2(3, 3)
 texture = ExtResource("4_0kqbx")
 vframes = 8
 
+[node name="Timer" type="Timer" parent="DiceDisplay/Die2"]
+
 [node name="Die3" type="Node2D" parent="DiceDisplay"]
 position = Vector2(750, 375)
+script = ExtResource("7_t2vwx")
 
 [node name="Sprite" type="Sprite2D" parent="DiceDisplay/Die3"]
 scale = Vector2(3, 3)
 texture = ExtResource("4_0kqbx")
 vframes = 8
+
+[node name="Timer" type="Timer" parent="DiceDisplay/Die3"]
 
 [node name="DieAreaMove" type="Node2D" parent="DiceDisplay"]
 position = Vector2(450, 275)
@@ -118,4 +171,22 @@ scale = Vector2(3, 3)
 texture = ExtResource("7_4a8nq")
 offset = Vector2(0, -4.5)
 
+[node name="Selector" type="Node2D" parent="DiceDisplay"]
+
 [node name="MessageDisplay" type="Node2D" parent="."]
+script = ExtResource("16_52wp5")
+
+[node name="Message" type="RichTextLabel" parent="MessageDisplay"]
+offset_left = 280.0
+offset_top = 47.0
+offset_right = 867.0
+offset_bottom = 115.0
+bbcode_enabled = true
+text = "[font_size=18][center]This is a message that will show up to tell the player more information.[/center]"
+
+[connection signal="roll_clicked" from="DiceDisplay/RollButton" to="DiceDisplay/Die1" method="_on_roll_button_roll_clicked"]
+[connection signal="roll_clicked" from="DiceDisplay/RollButton" to="DiceDisplay/Die2" method="_on_roll_button_roll_clicked"]
+[connection signal="roll_clicked" from="DiceDisplay/RollButton" to="DiceDisplay/Die3" method="_on_roll_button_roll_clicked"]
+[connection signal="timeout" from="DiceDisplay/Die1/Timer" to="DiceDisplay/Die1" method="_on_timer_timeout"]
+[connection signal="timeout" from="DiceDisplay/Die2/Timer" to="DiceDisplay/Die2" method="_on_timer_timeout"]
+[connection signal="timeout" from="DiceDisplay/Die3/Timer" to="DiceDisplay/Die3" method="_on_timer_timeout"]

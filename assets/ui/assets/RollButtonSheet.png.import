@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4l1pjdb4cym8"
-path="res://.godot/imported/HealthBarOverlay.png-fa700fcbdf473c0d8100146593e4ba84.ctex"
+uid="uid://0dak0k3s5m2d"
+path="res://.godot/imported/RollButtonSheet.png-745ebb8d6739f6e7900879afc0fbb2e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/HealthBarOverlay.png"
-dest_files=["res://.godot/imported/HealthBarOverlay.png-fa700fcbdf473c0d8100146593e4ba84.ctex"]
+source_file="res://assets/ui/assets/RollButtonSheet.png"
+dest_files=["res://.godot/imported/RollButtonSheet.png-745ebb8d6739f6e7900879afc0fbb2e7.ctex"]
 
 [params]
 

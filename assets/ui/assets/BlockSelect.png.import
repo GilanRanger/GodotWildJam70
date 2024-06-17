@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0dak0k3s5m2d"
-path="res://.godot/imported/RollButtonSheet.png-faa7b6605dafa3a65dbb4fdefdf36aff.ctex"
+uid="uid://csxihfj26eau4"
+path="res://.godot/imported/BlockSelect.png-0beb6ddb289ad798ae403b3e321b3fd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/RollButtonSheet.png"
-dest_files=["res://.godot/imported/RollButtonSheet.png-faa7b6605dafa3a65dbb4fdefdf36aff.ctex"]
+source_file="res://assets/ui/assets/BlockSelect.png"
+dest_files=["res://.godot/imported/BlockSelect.png-0beb6ddb289ad798ae403b3e321b3fd4.ctex"]
 
 [params]
 

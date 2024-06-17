@@ -11,7 +11,7 @@ class_name FightInterface
 func _ready():
 	dice_display.visible = true
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
