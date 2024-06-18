@@ -191,6 +191,7 @@ offset_bottom = 115.0
 bbcode_enabled = true
 text = "[font_size=18][center]This is a message that will show up to tell the player more information.[/center]"
 
+[connection signal="go_clicked" from="DiceDisplay/GoButton" to="." method="_on_go_button_go_clicked"]
 [connection signal="roll_clicked" from="DiceDisplay/RollButton" to="DiceDisplay/Die1" method="_on_roll_button_roll_clicked"]
 [connection signal="roll_clicked" from="DiceDisplay/RollButton" to="DiceDisplay/Die2" method="_on_roll_button_roll_clicked"]
 [connection signal="roll_clicked" from="DiceDisplay/RollButton" to="DiceDisplay/Die3" method="_on_roll_button_roll_clicked"]

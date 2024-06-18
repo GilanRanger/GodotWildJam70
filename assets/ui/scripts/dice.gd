@@ -80,7 +80,7 @@ func _on_roll_button_roll_clicked():
 	start_spin()
 	
 func _input(event):
-	if not visible: return
+	if not get_parent().visible: return
 	if result == -1: return
 	
 	# Select Die
@@ -136,16 +136,19 @@ func move_to(area: DiceArea):
 		if global.move_picked == true: return
 		global_position = move_area.global_position
 		global.move_picked = true
+		global.player_moves_left = result
 		
 	if area == DiceArea.ATTACK:
 		if global.attack_picked == true: return
 		global_position = attack_area.global_position
 		global.attack_picked = true
+		global.player_attacks_left = result
 		
 	if area == DiceArea.BLOCK:
 		if global.block_picked == true: return
 		global_position = block_area.global_position
 		global.block_picked = true
+		global.player_blocks_left = result
 
 	current_area = area
 	selector.global_position = global_position
