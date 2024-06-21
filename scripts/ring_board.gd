@@ -2,7 +2,7 @@ extends Node2D
 class_name RingBoard
 
 @onready var grid_nodes: Array = get_node("GridNodes").get_children()
-@onready var enemy = get_node("Enemy").get_child(0)
+var enemy: FightEnemy
 @onready var fight_player = get_node("Player/FightPlayer")
 @onready var interface: FightInterface = get_node("UI/CanvasLayer")
 
@@ -21,10 +21,20 @@ enum FightState {
 var fight_state = FightState.WAIT
 
 func _ready():
-	await get_tree().create_timer(2.0).timeout
+	if global.selected_fight == global.Fight.FAD_FELEN:
+		enemy = load("res://enemy/fight_fed_felen.tscn").instantiate()
+	
+	enemy.board = self
+	get_node("Enemy").add_child(enemy)
+	
+	interface.setup_health(global.player_health, enemy.health)
+	interface.setup_names("Pryderi", enemy.enemy_name)
+	
 	set_fight_state(FightState.ROLL)
 	
 func _process(delta):
+	interface.update_health([fight_player.health, global.player_health], [enemy.health, enemy.max_health])
+	
 	if interface.start_turn:
 		set_fight_state(FightState.MOVE_PLAYER)
 		interface.start_turn = false
@@ -37,6 +47,13 @@ func set_fight_state(state: FightState):
 	fight_state = state
 	
 	if state == FightState.ROLL:
+		await get_tree().create_timer(2.0).timeout
+		
+		interface.message_display.visible = true
+		interface.message_display.set_message("Roll and pick!")
+		
+		enemy.hide_attack()
+		interface.reset_dice()
 		interface.dice_display.visible = true
 		
 		enemy.start_new_turn()
@@ -44,15 +61,18 @@ func set_fight_state(state: FightState):
 	elif state == FightState.MOVE_PLAYER:
 		interface.dice_display.visible = false
 		
+		interface.message_display.visible = true
+		
 		if(global.player_moves_left == -1):
 			set_fight_state(FightState.MOVE_ENEMY)
 		else:
 			fight_player.can_move = true
 		
-		interface.message_display.visible = true
 		interface.message_display.set_message("Click a tile to move. Moves left: " + str(global.player_moves_left))
 		
 	elif state == FightState.MOVE_ENEMY:
+		interface.message_display.set_message("Click a tile to move. Moves left: 0")
+		
 		if global.player_moves_left > 0:
 			set_fight_state(FightState.MOVE_PLAYER)
 		else:
@@ -67,10 +87,16 @@ func set_fight_state(state: FightState):
 			set_fight_state(FightState.ATTACK_PLAYER)
 		
 	elif state == FightState.ATTACK_PLAYER:
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(2.0).timeout
 		
-		interface.message_display.set_message("Click to attack for " + str(global.player_attacks_left) + " damage.")
+		var player_attack = global.player_attacks_left
+		if player_attack < 0: player_attack = 0
+		interface.message_display.set_message("Attacking for " + str(player_attack) + " damage.")
 		fight_player.show_attack()
+		
+		fight_player.attack(enemy)
+		
+		set_fight_state(FightState.ATTACK_ENEMY)
 		
 	elif state == FightState.ATTACK_ENEMY:
 		await get_tree().create_timer(2.0).timeout
@@ -78,11 +104,46 @@ func set_fight_state(state: FightState):
 		fight_player.hide_attack()
 		enemy.show_attack()
 		
+		var enemy_attack_damage = enemy.get_attack_damage()
+		
+		var block = global.player_blocks_left
+		if block < 0: block = 0
+		interface.message_display.set_message("Enemy attack of " + str(enemy_attack_damage) 
+			+ " with player blocking " + str(block) + ".")
+		
+		var result_attack = enemy_attack_damage - block
+		if result_attack < 0: result_attack = 0
+		enemy.attack(result_attack, fight_player)
+		
+		if enemy.health <= 0:
+			set_fight_state(FightState.PLAYER_WIN)
+		elif fight_player.health <= 0:
+			set_fight_state(FightState.PLAYER_LOSE)
+		else:
+			set_fight_state(FightState.ROLL)
+		
 		pass
 	elif state == FightState.PLAYER_WIN:
-		pass
+		interface.victory_screen.visible = true
+		
+		if global.selected_fight == global.Fight.FAD_FELEN:
+			global.fad_felen_alive = false
+		if global.selected_fight == global.Fight.BWGAN:
+			global.bwgan_alive = false
+		if global.selected_fight == global.Fight.GIANT:
+			global.giant_alive = false
+		if global.selected_fight == global.Fight.FAD_FELEN:
+			global.fad_felen_alive = false
+			
+		global.player_health += 2
+		
+		await get_tree().create_timer(2.0).timeout
+		# return to world
+		get_tree().change_scene_to_file("res://scenes/world_board.tscn")
 	elif state == FightState.PLAYER_LOSE:
-		pass
+		interface.game_over_screen.visible = true
+		# return to start menu
+		
 
 func get_node_position(x: int, y: int) -> Vector2:
 	var node_name = str(x) + "," + str(y)

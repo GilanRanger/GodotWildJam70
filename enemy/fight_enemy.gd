@@ -10,15 +10,21 @@ var currentTile: Array = [3,5]
 @export var total_moves: int = 2
 
 @export var attack_regions = [[0,0]]
+@export var damage_range = [1,1]
+
+@export var enemy_name: String
 
 @onready var attack_region: Node2D = get_node("EnemySprite/AttackRegion")
 
 var moves_left = total_moves
+var max_health: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	snap_update_position()
 	hide_attack()
+	
+	max_health = health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,6 +38,21 @@ func show_attack():
 
 func hide_attack():
 	attack_region.visible = false
+	
+func get_attack_damage() -> int:
+	return randi_range(damage_range[0], damage_range[1])
+	
+func attack(damage: int, player: FightPlayer):
+	await get_tree().create_timer(1.0).timeout
+	
+	var playerTile = (player as FightPlayer).currentTile
+	
+	if abs(playerTile[0] - currentTile[0]) > 1 or abs(playerTile[1] - currentTile[1]) > 1:
+		print("Too far to attack!")
+		return
+	
+	print("Damage:", damage)
+	player.health -= damage
 
 func move(player_position: Array):
 	var offset_position = [0,0]

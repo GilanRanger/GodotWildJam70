@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dakughp4wnfqp"]
+[gd_scene load_steps=5 format=3 uid="uid://dakughp4wnfqp"]
 
 [ext_resource type="Texture2D" uid="uid://5yc1pucje53p" path="res://assets/backgrounds/RingOneBoard.png" id="1_lplvv"]
 [ext_resource type="Script" path="res://scripts/ring_board.gd" id="1_q2477"]
 [ext_resource type="PackedScene" uid="uid://ban8eyinllj6l" path="res://player/fight_player.tscn" id="2_q6743"]
-[ext_resource type="PackedScene" uid="uid://cpyuh5slmqrjl" path="res://enemy/fight_fed_felen.tscn" id="4_07akb"]
 [ext_resource type="PackedScene" uid="uid://b7atjm54htmt8" path="res://scenes/fight_ui.tscn" id="4_hlp2o"]
 
 [node name="RingOneBoard" type="Node2D"]
@@ -177,10 +176,6 @@ position = Vector2(-576, -324)
 [node name="CanvasLayer" parent="UI" instance=ExtResource("4_hlp2o")]
 
 [node name="Enemy" type="Node2D" parent="."]
-
-[node name="FightFedFelen" parent="Enemy" node_paths=PackedStringArray("board") instance=ExtResource("4_07akb")]
-board = NodePath("../..")
-offset = [0, 1]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

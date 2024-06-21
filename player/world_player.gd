@@ -10,7 +10,7 @@ var currentNode: Array
 @onready var camera = get_node("Camera2D")
 
 func _ready():
-	set_current_node(1, 3)
+	set_current_node(global.player_world_position[0], global.player_world_position[1])
 	snap_update_position()
 
 func _input(event):
@@ -33,12 +33,20 @@ func _process(delta):
 func set_current_node(x: int, y: int):
 	currentNode = [x, y]
 	
+	global.player_world_position[0] = x
+	global.player_world_position[1] = y
+	
 func attempt_start_fight():
 	var enemy = board.get_enemy_at(currentNode[0], currentNode[1])
 	if enemy == null: return
 	
 	print("Starting fight with: ", enemy.name)
+	
 	# Switch to fight scene
+	if enemy.name == "FadFelen":
+		global.selected_fight = global.Fight.FAD_FELEN
+		get_tree().change_scene_to_file("res://scenes/ring_one_board.tscn")
+	
 	
 func update_position():
 	var node_position = board.get_node_position(currentNode[0], currentNode[1])

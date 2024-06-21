@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7atjm54htmt8"]
+[gd_scene load_steps=22 format=3 uid="uid://b7atjm54htmt8"]
 
 [ext_resource type="Script" path="res://scenes/fight_interface.gd" id="1_xnesr"]
 [ext_resource type="Texture2D" uid="uid://djihavvqluisi" path="res://assets/ui/assets/HealthBarBackground.png" id="2_0u6qh"]
@@ -18,6 +18,9 @@
 [ext_resource type="Script" path="res://scenes/message_display.gd" id="16_52wp5"]
 [ext_resource type="Texture2D" uid="uid://dm1m2gw2pdy1g" path="res://assets/ui/assets/Selector.png" id="16_i6rxl"]
 [ext_resource type="Script" path="res://scenes/selector.gd" id="16_spbrb"]
+[ext_resource type="Texture2D" uid="uid://bd2x74otnwrnl" path="res://assets/ui/assets/Victory.png" id="19_p7muq"]
+[ext_resource type="Texture2D" uid="uid://dsyxwo2gsbmv7" path="res://assets/ui/assets/GameOver.png" id="20_enut6"]
+[ext_resource type="Texture2D" uid="uid://wnrndmoocl0g" path="res://assets/ui/assets/healthbonusicon.png" id="20_p60o4"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_xnesr")
@@ -190,6 +193,47 @@ offset_right = 867.0
 offset_bottom = 115.0
 bbcode_enabled = true
 text = "[font_size=18][center]This is a message that will show up to tell the player more information.[/center]"
+
+[node name="PlayerVictoryScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerVictoryScreen"]
+position = Vector2(580, 413)
+scale = Vector2(15.6875, 13.1562)
+texture = ExtResource("19_p7muq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PlayerVictoryScreen"]
+position = Vector2(-483, 413)
+scale = Vector2(17.6562, 13.1562)
+texture = ExtResource("19_p7muq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PlayerVictoryScreen"]
+position = Vector2(1659, 381)
+scale = Vector2(18.4375, 13.1562)
+texture = ExtResource("19_p7muq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PlayerVictoryScreen"]
+position = Vector2(350, 515)
+scale = Vector2(7.75, 7.625)
+texture = ExtResource("20_p60o4")
+
+[node name="PlayerGameOverScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerGameOverScreen"]
+position = Vector2(588, 330)
+scale = Vector2(11.75, 10.4922)
+texture = ExtResource("20_enut6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PlayerGameOverScreen"]
+position = Vector2(-686, 330)
+scale = Vector2(28.5625, 10.4922)
+texture = ExtResource("20_enut6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PlayerGameOverScreen"]
+position = Vector2(1860, 330)
+scale = Vector2(28.5625, 10.4922)
+texture = ExtResource("20_enut6")
 
 [connection signal="go_clicked" from="DiceDisplay/GoButton" to="." method="_on_go_button_go_clicked"]
 [connection signal="roll_clicked" from="DiceDisplay/RollButton" to="DiceDisplay/Die1" method="_on_roll_button_roll_clicked"]

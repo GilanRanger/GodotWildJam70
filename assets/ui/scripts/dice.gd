@@ -22,14 +22,19 @@ enum DiceArea {
 const last_frame = 7
 var current_frame = 0
 
-var rng = RandomNumberGenerator.new()
-
 var result = -1
 var current_area: DiceArea
 
+var initial_position: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	initial_position = global_position
+	
+func reset():
+	global_position = initial_position
+	result = -1
+	current_area
 	
 func start_spin():
 	timer.wait_time = 0.001
@@ -49,8 +54,8 @@ func start_spin():
 func spin():
 	animate_spin()
 	
-	timer.wait_time += rng.randf_range(0.0, 0.049)
-	if timer.wait_time > rng.randf_range(0.3, 0.5):
+	timer.wait_time += randf_range(0.0, 0.049)
+	if timer.wait_time > randf_range(0.3, 0.5):
 		stop_spin()
 		if sprite.frame % 2 == 1:
 			sprite.frame -= 1
@@ -62,7 +67,6 @@ func stop_spin():
 
 func send_result():
 	result = (sprite.frame / 2 ) + 1
-	print(result)
 
 func animate_spin():
 	if current_frame < last_frame:

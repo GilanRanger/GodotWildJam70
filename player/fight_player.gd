@@ -1,4 +1,5 @@
 extends Node2D
+class_name FightPlayer
 
 @onready var tokens: Array = global.player_tokens
 @onready var health: int = global.player_health
@@ -31,7 +32,6 @@ func _input(event):
 			if abs(currentTile[1] - board.get_position_from_node(node)[1]) <= 1:
 				currentTile = board.get_position_from_node(node)
 				global.player_moves_left -= 1
-				print(global.player_moves_left)
 				can_move = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +43,20 @@ func show_attack():
 
 func hide_attack():
 	attack_region.visible = false
+	
+func attack(enemy: FightEnemy):
+	await get_tree().create_timer(1.0).timeout
+	
+	var enemyTile = enemy.currentTile 
+	
+	if abs(enemyTile[0] - currentTile[0]) > 1 or abs(enemyTile[1] - currentTile[1]) > 1:
+		print("Too far to attack!")
+		return
+	
+	var damage = global.player_attacks_left
+	if damage < 0: damage = 0
+	print("Damage:", damage)
+	enemy.health -= damage
 
 func update_position():
 	var node_position = board.get_node_position(currentTile[0], currentTile[1])

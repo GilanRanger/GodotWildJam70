@@ -7,10 +7,14 @@ var enemies = []
 func _ready():
 	create_node_relations()
 	enemies = get_node("WorldEnemies").get_children()
+	
+	if not global.fad_felen_alive:
+		get_node("WorldEnemies/FadFelen").visible = false
 
 func get_enemy_at(x: int, y: int) -> WorldEnemy:
 	for enemy in enemies:
 		if (enemy as WorldEnemy).homeNode == [x, y]:
+			if enemy.visible == false: return null
 			return (enemy as WorldEnemy)
 			
 	return null
