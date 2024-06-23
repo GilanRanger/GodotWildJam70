@@ -15,14 +15,32 @@ var player_blocks_left = -1
 
 enum Fight {
 	FAD_FELEN,
-	BWGAN,
+	GWYLLION,
 	GIANT,
-	GWIBER
+	GWIBER,
+	
+	CWN_ANNWN,
+	BULL,
+	BWGAN,
+	
+	COCKATRICE,
+	PWCA,
+	
+	RED_DRAGON
 }
 
 var selected_fight = Fight.FAD_FELEN
 
 var fad_felen_alive = true
-var bwgan_alive = true
+var gwyllion_alive = true
 var giant_alive = true
 var gwiber_alive = true
+
+var cwn_annwn_alive = true
+var bull_alive = true
+var bwgan_alive = true
+
+var cockatrice_alive = true
+var pwca_alive = true
+
+var red_dragon_alive = true

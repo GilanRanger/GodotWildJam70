@@ -1,12 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cerjsdrpv2nw0"]
+[gd_scene load_steps=15 format=3 uid="uid://cerjsdrpv2nw0"]
 
 [ext_resource type="Texture2D" uid="uid://dlpe2r4kdmce7" path="res://assets/backgrounds/WorldBoard.png" id="1_ktfvh"]
 [ext_resource type="PackedScene" uid="uid://cbxdojvqt5wqk" path="res://player/world_player.tscn" id="2_nkorc"]
 [ext_resource type="Script" path="res://scripts/world_board.gd" id="3_8iqnj"]
+[ext_resource type="Texture2D" uid="uid://doeqat5s5mqte" path="res://assets/ui/assets/end_screen.png" id="4_3p7gw"]
 [ext_resource type="PackedScene" uid="uid://dvvi6ceukifgv" path="res://enemy/fad_felen.tscn" id="4_wjls5"]
 [ext_resource type="PackedScene" uid="uid://cl0il5ctip5gq" path="res://enemy/giant.tscn" id="5_0iemm"]
 [ext_resource type="PackedScene" uid="uid://b11survnvtkvq" path="res://enemy/gwyllion.tscn" id="6_21q4v"]
 [ext_resource type="PackedScene" uid="uid://b2r8j8rn8g6g5" path="res://enemy/gwiber.tscn" id="7_x76o5"]
+[ext_resource type="PackedScene" uid="uid://b0rssd25xkbsn" path="res://enemy/cwnannwn.tscn" id="8_p0rk3"]
+[ext_resource type="PackedScene" uid="uid://dpbdbgx27e0bv" path="res://enemy/bull.tscn" id="9_a7fhn"]
+[ext_resource type="PackedScene" uid="uid://cbhet510tgyak" path="res://enemy/bwgan.tscn" id="10_1mtc6"]
+[ext_resource type="PackedScene" uid="uid://dnma4rv67o4aq" path="res://enemy/cockatrice.tscn" id="11_tj656"]
+[ext_resource type="PackedScene" uid="uid://dhc552c2kmfcj" path="res://enemy/pwca.tscn" id="12_1hrhf"]
+[ext_resource type="PackedScene" uid="uid://c874iri3lv1cs" path="res://enemy/red_dragon.tscn" id="13_qpc1p"]
 
 [node name="WorldBoard" type="Node2D"]
 script = ExtResource("3_8iqnj")
@@ -17,6 +24,12 @@ texture = ExtResource("1_ktfvh")
 
 [node name="WorldPlayer" parent="." node_paths=PackedStringArray("board") instance=ExtResource("2_nkorc")]
 board = NodePath("..")
+
+[node name="EndScreen" type="Sprite2D" parent="WorldPlayer"]
+z_index = 1
+position = Vector2(2.12504, 8.00001)
+scale = Vector2(2.38965, 2.2)
+texture = ExtResource("4_3p7gw")
 
 [node name="WorldNodes" type="Node2D" parent="."]
 
@@ -119,4 +132,22 @@ board = NodePath("../..")
 
 [node name="Gwiber" parent="WorldEnemies" node_paths=PackedStringArray("board") instance=ExtResource("7_x76o5")]
 homeNode = [-3, -1]
+board = NodePath("../..")
+
+[node name="CwnAnnwn" parent="WorldEnemies" node_paths=PackedStringArray("board") instance=ExtResource("8_p0rk3")]
+board = NodePath("../..")
+
+[node name="Bull" parent="WorldEnemies" node_paths=PackedStringArray("board") instance=ExtResource("9_a7fhn")]
+board = NodePath("../..")
+
+[node name="Bwgan" parent="WorldEnemies" node_paths=PackedStringArray("board") instance=ExtResource("10_1mtc6")]
+board = NodePath("../..")
+
+[node name="Cockatrice" parent="WorldEnemies" node_paths=PackedStringArray("board") instance=ExtResource("11_tj656")]
+board = NodePath("../..")
+
+[node name="Pwca" parent="WorldEnemies" node_paths=PackedStringArray("board") instance=ExtResource("12_1hrhf")]
+board = NodePath("../..")
+
+[node name="RedDragon" parent="WorldEnemies" node_paths=PackedStringArray("board") instance=ExtResource("13_qpc1p")]
 board = NodePath("../..")

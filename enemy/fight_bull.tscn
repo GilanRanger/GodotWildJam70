@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://gn4h63y2tyjr"]
+
+[ext_resource type="Script" path="res://enemy/fight_enemy.gd" id="1_bi04t"]
+[ext_resource type="Texture2D" uid="uid://v5v2lrhtnhff" path="res://assets/sprites/RoaringBull.png" id="2_w128l"]
+[ext_resource type="Texture2D" uid="uid://dismctkf334el" path="res://assets/sprites/attack_region.png" id="3_u72ds"]
+
+[node name="FightBull" type="Node2D"]
+script = ExtResource("1_bi04t")
+health = 12
+offset = [0, 1]
+total_moves = 4
+attack_regions = [[1, -1], [0, -1], [-1, -1], [1, -2], [0, -2], [-1, -2]]
+damage_range = [5, 8]
+enemy_name = "Roaring Bull"
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_w128l")
+
+[node name="AttackRegion" type="Node2D" parent="EnemySprite"]
+
+[node name="Region3" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_u72ds")
+
+[node name="Region4" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_u72ds")
+
+[node name="Region8" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, 0)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_u72ds")
+
+[node name="Region5" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-48, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_u72ds")
+
+[node name="Region6" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-48, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_u72ds")
+
+[node name="Region9" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-48, 0)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_u72ds")

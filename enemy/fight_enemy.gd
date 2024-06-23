@@ -24,6 +24,8 @@ func _ready():
 	snap_update_position()
 	hide_attack()
 	
+	attack_regions.append([0,0])
+	
 	max_health = health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,17 +44,19 @@ func hide_attack():
 func get_attack_damage() -> int:
 	return randi_range(damage_range[0], damage_range[1])
 	
-func attack(damage: int, player: FightPlayer):
+func attack(damage: int, player: FightPlayer) -> int:
 	await get_tree().create_timer(1.0).timeout
 	
 	var playerTile = (player as FightPlayer).currentTile
 	
-	if abs(playerTile[0] - currentTile[0]) > 1 or abs(playerTile[1] - currentTile[1]) > 1:
+	if not attack_regions.has([playerTile[0] - currentTile[0], playerTile[1] - currentTile[1]]):
 		print("Too far to attack!")
-		return
+		return 1
 	
 	print("Damage:", damage)
 	player.health -= damage
+	
+	return player.health
 
 func move(player_position: Array):
 	var offset_position = [0,0]

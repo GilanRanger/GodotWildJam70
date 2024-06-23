@@ -23,6 +23,27 @@ var fight_state = FightState.WAIT
 func _ready():
 	if global.selected_fight == global.Fight.FAD_FELEN:
 		enemy = load("res://enemy/fight_fed_felen.tscn").instantiate()
+	if global.selected_fight == global.Fight.GIANT:
+		enemy = load("res://enemy/fight_giant.tscn").instantiate()
+	if global.selected_fight == global.Fight.GWYLLION:
+		enemy = load("res://enemy/fight_gwyllion.tscn").instantiate()
+	if global.selected_fight == global.Fight.GWIBER:
+		enemy = load("res://enemy/fight_gwiber.tscn").instantiate()
+	
+	if global.selected_fight == global.Fight.CWN_ANNWN:
+		enemy = load("res://enemy/fight_cwn_annwn.tscn").instantiate()
+	if global.selected_fight == global.Fight.BWGAN:
+		enemy = load("res://enemy/fight_bwgan.tscn").instantiate()
+	if global.selected_fight == global.Fight.BULL:
+		enemy = load("res://enemy/fight_bull.tscn").instantiate()
+	
+	if global.selected_fight == global.Fight.COCKATRICE:
+		enemy = load("res://enemy/fight_cockatrice.tscn").instantiate()
+	if global.selected_fight == global.Fight.PWCA:
+		enemy = load("res://enemy/fight_pwca.tscn").instantiate()
+		
+	if global.selected_fight == global.Fight.RED_DRAGON:
+		enemy = load("res://enemy/fight_red_dragon.tscn").instantiate()
 	
 	enemy.board = self
 	get_node("Enemy").add_child(enemy)
@@ -113,11 +134,11 @@ func set_fight_state(state: FightState):
 		
 		var result_attack = enemy_attack_damage - block
 		if result_attack < 0: result_attack = 0
-		enemy.attack(result_attack, fight_player)
-		
+		var player_health = await enemy.attack(result_attack, fight_player)
+			
 		if enemy.health <= 0:
 			set_fight_state(FightState.PLAYER_WIN)
-		elif fight_player.health <= 0:
+		elif player_health <= 0:
 			set_fight_state(FightState.PLAYER_LOSE)
 		else:
 			set_fight_state(FightState.ROLL)
@@ -128,12 +149,24 @@ func set_fight_state(state: FightState):
 		
 		if global.selected_fight == global.Fight.FAD_FELEN:
 			global.fad_felen_alive = false
-		if global.selected_fight == global.Fight.BWGAN:
-			global.bwgan_alive = false
+		if global.selected_fight == global.Fight.GWYLLION:
+			global.gwyllion_alive = false
 		if global.selected_fight == global.Fight.GIANT:
 			global.giant_alive = false
-		if global.selected_fight == global.Fight.FAD_FELEN:
-			global.fad_felen_alive = false
+		if global.selected_fight == global.Fight.GWIBER:
+			global.gwiber_alive = false
+		if global.selected_fight == global.Fight.CWN_ANNWN:
+			global.cwn_annwn_alive = false
+		if global.selected_fight == global.Fight.BWGAN:
+			global.bwgan_alive = false
+		if global.selected_fight == global.Fight.BULL:
+			global.bull_alive = false
+		if global.selected_fight == global.Fight.COCKATRICE:
+			global.cockatrice_alive = false
+		if global.selected_fight == global.Fight.PWCA:
+			global.pwca_alive = false
+		if global.selected_fight == global.Fight.RED_DRAGON:
+			global.red_dragon_alive = false
 			
 		global.player_health += 2
 		
@@ -142,8 +175,6 @@ func set_fight_state(state: FightState):
 		get_tree().change_scene_to_file("res://scenes/world_board.tscn")
 	elif state == FightState.PLAYER_LOSE:
 		interface.game_over_screen.visible = true
-		# return to start menu
-		
 
 func get_node_position(x: int, y: int) -> Vector2:
 	var node_name = str(x) + "," + str(y)

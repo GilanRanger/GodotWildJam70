@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqf3t2imyy20g"]
+
+[ext_resource type="Texture2D" uid="uid://08dxedsj8dq0" path="res://assets/ui/assets/start_background.png" id="1_d1di4"]
+[ext_resource type="Script" path="res://scenes/start.gd" id="1_ehow3"]
+[ext_resource type="Texture2D" uid="uid://cnnhlt6337bo4" path="res://assets/ui/assets/start_button.png" id="2_8v8af"]
+[ext_resource type="Texture2D" uid="uid://64uxejvr1gbb" path="res://assets/ui/assets/start_background_edge.png" id="3_gdm2r"]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_ehow3")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(566, 323)
+scale = Vector2(3, 3)
+texture = ExtResource("1_d1di4")
+
+[node name="Button" type="Sprite2D" parent="Background"]
+position = Vector2(-5, 3)
+texture = ExtResource("2_8v8af")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-187, 328)
+scale = Vector2(2.94531, 3.32)
+texture = ExtResource("3_gdm2r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(558, 944)
+scale = Vector2(3.64062, 3.32)
+texture = ExtResource("3_gdm2r")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1406, 321)
+scale = Vector2(3.64062, 3.32)
+texture = ExtResource("3_gdm2r")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(556, -293)
+scale = Vector2(3.64062, 3.32)
+texture = ExtResource("3_gdm2r")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0rssd25xkbsn"]
+
+[ext_resource type="Script" path="res://enemy/world_enemy.gd" id="1_01y2k"]
+[ext_resource type="Texture2D" uid="uid://cgd4felvh2u4x" path="res://assets/sprites/CwnAnnwn.png" id="2_8wu8y"]
+
+[node name="CwnAnnwn" type="Node2D"]
+script = ExtResource("1_01y2k")
+homeNode = [-2, 0]
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_8wu8y")

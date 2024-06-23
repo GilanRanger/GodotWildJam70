@@ -129,12 +129,15 @@ func move_to(area: DiceArea):
 	
 	if current_area == DiceArea.MOVE:
 		global.move_picked = false
+		#global.player_moves_left = -1
 	
 	if current_area == DiceArea.ATTACK:
 		global.attack_picked = false
+		#global.player_attacks_left = -1
 		
 	if current_area == DiceArea.BLOCK:
 		global.block_picked = false
+		#global.player_blocks_left = -1
 	
 	if area == DiceArea.MOVE:
 		if global.move_picked == true: return

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlmgjqcxpkssx"]
+
+[ext_resource type="Script" path="res://enemy/fight_enemy.gd" id="1_fag1n"]
+[ext_resource type="Texture2D" uid="uid://c4x7klbtcynpi" path="res://assets/sprites/Gwiber.png" id="1_tk6d1"]
+[ext_resource type="Texture2D" uid="uid://dismctkf334el" path="res://assets/sprites/attack_region.png" id="2_km8fy"]
+
+[node name="FightGwiber" type="Node2D"]
+script = ExtResource("1_fag1n")
+health = 8
+offset = [-1, -1]
+total_moves = 4
+attack_regions = [[1, 1], [-1, 1], [-1, -1], [1, -1]]
+damage_range = [2, 3]
+enemy_name = "Gwiber"
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_tk6d1")
+
+[node name="AttackRegion" type="Node2D" parent="EnemySprite"]
+
+[node name="Region3" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("2_km8fy")
+
+[node name="Region4" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("2_km8fy")
+
+[node name="Region7" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("2_km8fy")
+
+[node name="Region8" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("2_km8fy")

@@ -7,9 +7,29 @@ var enemies = []
 func _ready():
 	create_node_relations()
 	enemies = get_node("WorldEnemies").get_children()
+	$WorldPlayer/EndScreen.visible = false
 	
 	if not global.fad_felen_alive:
 		get_node("WorldEnemies/FadFelen").visible = false
+	if not global.gwyllion_alive:
+		get_node("WorldEnemies/Gwyllion").visible = false
+	if not global.giant_alive:
+		get_node("WorldEnemies/Giant").visible = false
+	if not global.gwiber_alive:
+		get_node("WorldEnemies/Gwiber").visible = false
+	if not global.cwn_annwn_alive:
+		get_node("WorldEnemies/CwnAnnwn").visible = false
+	if not global.bwgan_alive:
+		get_node("WorldEnemies/Bwgan").visible = false
+	if not global.bull_alive:
+		get_node("WorldEnemies/Bull").visible = false
+	if not global.cockatrice_alive:
+		get_node("WorldEnemies/Cockatrice").visible = false
+	if not global.pwca_alive:
+		get_node("WorldEnemies/Pwca").visible = false
+	if not global.red_dragon_alive:
+		get_node("WorldEnemies/RedDragon").visible = false
+		$WorldPlayer/EndScreen.visible = true
 
 func get_enemy_at(x: int, y: int) -> WorldEnemy:
 	for enemy in enemies:
@@ -88,5 +108,5 @@ func create_node_relations():
 	node_relations[[1,-3]] = [[0,-3],[3,-3]]
 	node_relations[[0,-3]] = [[0,-2],[-1,-3],[1,-3]]
 	node_relations[[-1,-3]] = [[0,-3],[-3,-3]]
-	node_relations[[-3,-3]] = [[-2,-2],[-3,1],[-3,-1]]
+	node_relations[[-3,-3]] = [[-2,-2],[-3,-1],[-1,-3]]
 	node_relations[[-3,-1]] = [[-3,0],[-3,-3]]

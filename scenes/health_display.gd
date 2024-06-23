@@ -46,7 +46,7 @@ func _process(delta):
 	if health_percent > 0.20:
 		overlay.frame = 6
 		return
-	if health_percent > 0.10:
+	if health_percent <= 0.20 and health_percent > 0:
 		overlay.frame = 7
 		return
 	if health_percent == 0:

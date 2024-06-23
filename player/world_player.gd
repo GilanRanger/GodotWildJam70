@@ -26,7 +26,6 @@ func _input(event):
 			await get_tree().create_timer(1.0).timeout
 			attempt_start_fight()
 
-
 func _process(delta):
 	update_position()
 
@@ -46,7 +45,36 @@ func attempt_start_fight():
 	if enemy.name == "FadFelen":
 		global.selected_fight = global.Fight.FAD_FELEN
 		get_tree().change_scene_to_file("res://scenes/ring_one_board.tscn")
+	if enemy.name == "Gwyllion":
+		global.selected_fight = global.Fight.GWYLLION
+		get_tree().change_scene_to_file("res://scenes/ring_one_board.tscn")
+	if enemy.name == "Giant":
+		global.selected_fight = global.Fight.GIANT
+		get_tree().change_scene_to_file("res://scenes/ring_one_board.tscn")
+	if enemy.name == "Gwiber":
+		global.selected_fight = global.Fight.GWIBER
+		get_tree().change_scene_to_file("res://scenes/ring_one_board.tscn")
 	
+	if enemy.name == "CwnAnnwn":
+		global.selected_fight = global.Fight.CWN_ANNWN
+		get_tree().change_scene_to_file("res://scenes/ring_two_board.tscn")
+	if enemy.name == "Bwgan":
+		global.selected_fight = global.Fight.BWGAN
+		get_tree().change_scene_to_file("res://scenes/ring_two_board.tscn")
+	if enemy.name == "Bull":
+		global.selected_fight = global.Fight.BULL
+		get_tree().change_scene_to_file("res://scenes/ring_two_board.tscn")
+		
+	if enemy.name == "Cockatrice":
+		global.selected_fight = global.Fight.COCKATRICE
+		get_tree().change_scene_to_file("res://scenes/ring_three_board.tscn")
+	if enemy.name == "Pwca":
+		global.selected_fight = global.Fight.PWCA
+		get_tree().change_scene_to_file("res://scenes/ring_three_board.tscn")
+	
+	if enemy.name == "RedDragon":
+		global.selected_fight = global.Fight.RED_DRAGON
+		get_tree().change_scene_to_file("res://scenes/ring_four_board.tscn")
 	
 func update_position():
 	var node_position = board.get_node_position(currentNode[0], currentNode[1])

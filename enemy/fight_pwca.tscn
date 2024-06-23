@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://rkwct0n427gy"]
+
+[ext_resource type="Script" path="res://enemy/fight_enemy.gd" id="1_texur"]
+[ext_resource type="Texture2D" uid="uid://48gh70dwee4c" path="res://assets/sprites/Pwca.png" id="2_dk45f"]
+[ext_resource type="Texture2D" uid="uid://dismctkf334el" path="res://assets/sprites/attack_region.png" id="3_tn8sh"]
+
+[node name="FightPwca" type="Node2D"]
+script = ExtResource("1_texur")
+health = 16
+offset = [1, 1]
+total_moves = 5
+attack_regions = [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]]
+damage_range = [4, 6]
+enemy_name = "Pwca"
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_dk45f")
+
+[node name="AttackRegion" type="Node2D" parent="EnemySprite"]
+
+[node name="Region1" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, 0)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")
+
+[node name="Region2" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, 0)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")
+
+[node name="Region3" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")
+
+[node name="Region4" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")
+
+[node name="Region5" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(0, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")
+
+[node name="Region6" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(0, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")
+
+[node name="Region7" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")
+
+[node name="Region8" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_tn8sh")

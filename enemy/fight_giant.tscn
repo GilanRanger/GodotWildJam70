@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0hmvipsbmrqr"]
+
+[ext_resource type="Script" path="res://enemy/fight_enemy.gd" id="1_gdqte"]
+[ext_resource type="Texture2D" uid="uid://cvfbmm71r36ch" path="res://assets/sprites/Giant.png" id="2_pjk1g"]
+[ext_resource type="Texture2D" uid="uid://dismctkf334el" path="res://assets/sprites/attack_region.png" id="3_mxy56"]
+
+[node name="FightGiant" type="Node2D"]
+script = ExtResource("1_gdqte")
+health = 12
+offset = [1, 0]
+total_moves = 1
+attack_regions = [[1, 0], [-1, 0], [1, 1], [1, -1], [-1, 1], [-1, -1]]
+damage_range = [2, 4]
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_pjk1g")
+
+[node name="AttackRegion" type="Node2D" parent="EnemySprite"]
+
+[node name="Region1" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, 0)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_mxy56")
+
+[node name="Region2" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, 0)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_mxy56")
+
+[node name="Region3" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_mxy56")
+
+[node name="Region4" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(-24, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_mxy56")
+
+[node name="Region7" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, 24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_mxy56")
+
+[node name="Region8" type="Sprite2D" parent="EnemySprite/AttackRegion"]
+position = Vector2(24, -24)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("3_mxy56")
